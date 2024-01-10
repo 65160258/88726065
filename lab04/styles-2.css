@@ -1,0 +1,59 @@
+/* กำหนดค่าเริ่มต้นสำหรับองค์ประกอบทั้งหมด */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* กำหนดสไตล์สำหรับส่วนหัว */
+  
+  header {
+    background-color: rgb(60, 181, 96);
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  /* กำหนดสไตล์สำหรับเนื้อหาหลัก */
+  
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* กำหนดสไตล์สำหรับคอนเทนเนอร์ flexbox */
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* กำหนดสไตล์สำหรับรายการ flexbox ที่มีการจัดแนวแนวนอน */
+  
+  .flex-justify-center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* กำหนดสไตล์สำหรับรายการ flexbox ที่มีการจัดแนวแนวตั้ง */
+  
+  .flex-align-center {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* กำหนดสไตล์สำหรับรายการ flexbox */
+  
+  .flex-item {
+    width: 100px;
+    height: 100px;
+    background-color: #c27a7a;
+    margin: 10px;
+  }
+  
