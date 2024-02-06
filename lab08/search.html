@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book DB - Search</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="style.css">
+    <center>
+    <h3>Book Search</h3>
+    </center>
+    ค้นหาหนังสือ : <input type="text" id="search" onkeyup="searchBook()"> <button onclick="navigateToAddEdit()">เพิ่ม</button>
+    <div id="result"></div>
+
+    <script>
+        var books = JSON.parse(localStorage.getItem("books")) || [];
+
+        function searchBook() {
+            var search = document.getElementById("search").value;
+            var result = document.getElementById("result");
+            var html = "";
+            for (var i = 0; i < books.length; i++) {
+                if (books[i].id.toLowerCase().includes(search.toLowerCase()) ||
+                    books[i].name.toLowerCase().includes(search.toLowerCase()) ||
+                    books[i].price.toLowerCase().includes(search.toLowerCase())) {
+                    html += `<img src='https://t.ly/mtMN' onclick='editBook(${books[i].id})'>${books[i].id} : ${books[i].name} : ${books[i].price}<img src='https://t.ly/523J' onclick='deleteBook(${books[i].id})'><br>`;
+                }
+            }
+            result.innerHTML = "<hr>ผลการค้นหา<br>" + html;
+        }
+
+        // Function to navigate to add/edit page
+        function navigateToAddEdit() {
+            window.location.href = "addeditbook.html";
+        }
+
+        // Check if there's a new book added/edited
+        var newBook = JSON.parse(localStorage.getItem("newBook"));
+        if (newBook) {
+            // Add the new book to the books array
+            books.push(newBook);
+            // Save the updated books array to localStorage
+            localStorage.setItem("books", JSON.stringify(books));
+            // Clear the newBook from localStorage
+            localStorage.removeItem("newBook");
+            // Display the updated search results
+            searchBook();
+        }
+
+        function deleteBook(id) {
+            console.log("deleteBook function called"); // Debugging line
+            for (var i = 0; i < books.length; i++) {
+                if (books[i].id == id) {
+                    books.splice(i, 1);
+                }
+            }
+            // save to localStorage
+            localStorage.setItem("books", JSON.stringify(books));
+            // แสดงผล
+            searchBook();
+        }
+
+        // edit book
+        function editBook(id) {
+            console.log("editBook function called"); // Debugging line
+            for (var i = 0; i < books.length; i++) {
+                if (books[i].id == id) {
+                    document.getElementById("id").value = books[i].id;
+                    document.getElementById("book_name").value = books[i].name;
+                    document.getElementById("book_price").value = books[i].price;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

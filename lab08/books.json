@@ -1,0 +1,28 @@
+[
+    {
+      "id": "",
+      "name": "gamer in farm",
+      "price": "3000",
+      "authors": [
+        "toey",
+        "sawaade",
+        "peetoey"
+      ]
+    },
+    {
+      "id": "",
+      "name": "book2",
+      "price": "3123",
+      "authors": [
+        "pro"
+      ]
+    },
+    {
+      "id": "",
+      "name": "book3",
+      "price": "120",
+      "authors": [
+        "ruk"
+      ]
+    }
+  ]

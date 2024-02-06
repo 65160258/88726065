@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center>
+    <h3>Book DB::Add/Edit</h3>
+    </center>
+    <input type="hidden" id="id"><br>
+    <input type="text" id="book_name" placeholder="ชื่อหนังสือ"><br>
+    <input type="text" id="book_price" placeholder="ราคา"><br>
+    <!-- Add input fields for authors -->
+    <input type="text" id="author1" placeholder="ผู้แต่ง 1"><br>
+    <input type="text" id="author2" placeholder="ผู้แต่ง 2"><br>
+    <input type="text" id="author3" placeholder="ผู้แต่ง 3"><br>
+    <button onclick="addBook()">Save</button>
+    <hr>
+
+    <script>
+        function addBook() {
+            var id = document.getElementById("id").value;
+            var name = document.getElementById("book_name").value;
+            var price = document.getElementById("book_price").value;
+            var author1 = document.getElementById("author1").value;
+            var author2 = document.getElementById("author2").value;
+            var author3 = document.getElementById("author3").value;
+
+            // Create an array to store authors
+            var authors = [author1, author2, author3].filter(Boolean);
+
+            var book = {
+                id: id,
+                name: name,
+                price: price,
+                authors: authors
+            };
+
+            // Store the book in localStorage
+            localStorage.setItem("newBook", JSON.stringify(book));
+
+            // Navigate back to search.html
+            window.location.href = "search.html";
+        }
+    </script>
+</body>
+
+</html>
