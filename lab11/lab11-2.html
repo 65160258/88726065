@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js - Form input binding</title>
+    <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>Form Validation Demo</h1>
+    <div id="app">
+        <!-- @submit เป็นรูปย่อของ v-on:submit -->
+        <form @submit.prevent="checkForm">
+            <p v-if="hasErrors">
+                <b>Please correct the following error(s):</b>
+            </p>
+            <p>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" v-model="name">
+                <li v-if="errors['name']" style="color: red">{{ errors['name'] }}</li>
+            </p>
+            <p>
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" v-model="age" min="0">
+                <li v-if="errors['age']" style="color: red">{{ errors['age'] }}</li>
+            </p>
+            <p>
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="male" value="Male" v-model="gender">
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="female" value="Female" v-model="gender">
+                <li v-if="errors['gender']" style="color: red">{{ errors['gender'] }}</li>
+            </p>
+            <p>
+                <label for="movie">Your favorite Movie</label>
+                <select name="movie" id="movie" v-model="movie">
+                    <option>Star Wars</option>
+                    <option>Vanilla Sky</option>
+                    <option>Atomic Blonde</option>
+                </select>
+                <li v-if="errors['movie']" style="color: red">{{ errors['movie'] }}</li>
+            </p>
+            <p>
+                <!-- <button @click="checkForm">Submit</button> -->
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </div>
+    <script src="scriptlab11-2.js"></script>
+</body>
+
+</html>
